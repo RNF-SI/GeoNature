@@ -21,6 +21,7 @@ Attributes
    geonature.core.gn_monitoring.models.cor_site_area
    geonature.core.gn_monitoring.models.cor_module_type
    geonature.core.gn_monitoring.models.cor_site_type
+   geonature.core.gn_monitoring.models.corIndividualModule
 
 
 Classes
@@ -28,16 +29,27 @@ Classes
 
 .. autoapisummary::
 
+   geonature.core.gn_monitoring.models.CorVisitObserver
    geonature.core.gn_monitoring.models.BibTypeSite
    geonature.core.gn_monitoring.models.TBaseVisits
    geonature.core.gn_monitoring.models.TBaseSites
    geonature.core.gn_monitoring.models.TObservations
+   geonature.core.gn_monitoring.models.TMarkingEvent
+   geonature.core.gn_monitoring.models.TIndividuals
 
 
 Module Contents
 ---------------
 
 .. py:data:: cor_visit_observer
+
+.. py:class:: CorVisitObserver
+
+   Bases: :py:obj:`geonature.utils.env.DB.Model`
+
+
+   .. py:attribute:: __table__
+
 
 .. py:data:: cor_site_module
 
@@ -139,6 +151,9 @@ Module Contents
    .. py:attribute:: dataset
 
 
+   .. py:attribute:: id_import
+
+
 .. py:class:: TBaseSites
 
    Bases: :py:obj:`geonature.utils.env.DB.Model`
@@ -179,6 +194,9 @@ Module Contents
    .. py:attribute:: geom
 
 
+   .. py:attribute:: geom_local
+
+
    .. py:attribute:: uuid_base_site
 
 
@@ -205,6 +223,11 @@ Module Contents
 
    .. py:attribute:: modules
 
+
+   .. py:attribute:: id_import
+
+
+.. py:data:: corIndividualModule
 
 .. py:class:: TObservations
 
@@ -238,5 +261,147 @@ Module Contents
 
 
    .. py:attribute:: uuid_observation
+
+
+   .. py:attribute:: id_import
+
+
+   .. py:attribute:: id_individual
+
+
+.. py:class:: TMarkingEvent
+
+   Bases: :py:obj:`geonature.utils.env.DB.Model`
+
+
+   .. py:attribute:: __tablename__
+      :value: 't_marking_events'
+
+
+
+   .. py:attribute:: __table_args__
+
+
+   .. py:attribute:: id_marking
+
+
+   .. py:attribute:: uuid_marking
+
+
+   .. py:attribute:: id_individual
+
+
+   .. py:attribute:: id_module
+
+
+   .. py:attribute:: id_digitiser
+
+
+   .. py:attribute:: marking_date
+
+
+   .. py:attribute:: id_operator
+
+
+   .. py:attribute:: id_base_marking_site
+
+
+   .. py:attribute:: id_nomenclature_marking_type
+
+
+   .. py:attribute:: marking_location
+
+
+   .. py:attribute:: marking_code
+
+
+   .. py:attribute:: marking_details
+
+
+   .. py:attribute:: data
+
+
+   .. py:attribute:: operator
+
+
+   .. py:attribute:: digitiser
+
+
+   .. py:attribute:: medias
+
+
+   .. py:method:: organism_actors()
+
+
+   .. py:method:: has_instance_permission(scope)
+
+
+.. py:class:: TIndividuals
+
+   Bases: :py:obj:`geonature.utils.env.DB.Model`
+
+
+   .. py:attribute:: __tablename__
+      :value: 't_individuals'
+
+
+
+   .. py:attribute:: __table_args__
+
+
+   .. py:attribute:: id_individual
+
+
+   .. py:attribute:: uuid_individual
+
+
+   .. py:attribute:: individual_name
+
+
+   .. py:attribute:: cd_nom
+
+
+   .. py:attribute:: id_nomenclature_sex
+
+
+   .. py:attribute:: active
+
+
+   .. py:attribute:: comment
+
+
+   .. py:attribute:: id_digitiser
+
+
+   .. py:attribute:: meta_create_date
+
+
+   .. py:attribute:: meta_update_date
+
+
+   .. py:attribute:: digitiser
+
+
+   .. py:attribute:: nomenclature_sex
+
+
+   .. py:attribute:: modules
+
+
+   .. py:attribute:: markings
+
+
+   .. py:attribute:: medias
+
+
+   .. py:method:: filter_by_scope(query, scope, user=None)
+      :classmethod:
+
+
+
+   .. py:method:: organism_actors()
+
+
+   .. py:method:: has_instance_permission(scope)
 
 

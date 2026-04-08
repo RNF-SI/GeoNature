@@ -5,7 +5,8 @@ geonature.utils.config_schema
 
 .. autoapi-nested-parse::
 
-   Description des options de configuration
+   Global GeoNature settings definitions and default values.
+   Never edit this file, but you can override some settings in you own config/default_config.toml file.
 
 
 
@@ -26,6 +27,7 @@ Classes
    geonature.utils.config_schema.RightsSchemaConf
    geonature.utils.config_schema.MailConfig
    geonature.utils.config_schema.CeleryConfig
+   geonature.utils.config_schema.PasswordManagement
    geonature.utils.config_schema.AccountManagement
    geonature.utils.config_schema.UsersHubConfig
    geonature.utils.config_schema.ServerConfig
@@ -40,7 +42,9 @@ Classes
    geonature.utils.config_schema.GnFrontEndConf
    geonature.utils.config_schema.ExportObservationSchema
    geonature.utils.config_schema.TaxonSheet
+   geonature.utils.config_schema.ObserverSheet
    geonature.utils.config_schema.Synthese
+   geonature.utils.config_schema.PermissionConfig
    geonature.utils.config_schema.MapConfig
    geonature.utils.config_schema.GnGeneralSchemaConf
 
@@ -131,6 +135,23 @@ Module Contents
    .. py:attribute:: timezone
 
 
+.. py:class:: PasswordManagement
+
+   Bases: :py:obj:`marshmallow.Schema`
+
+
+   .. py:attribute:: MIN_PASSWORD_LENGTH
+
+
+   .. py:attribute:: REQUIRE_SPECIAL_CHARACTER
+
+
+   .. py:attribute:: REQUIRE_DIGIT
+
+
+   .. py:attribute:: REQUIRE_MULTIPLE_CASE
+
+
 .. py:class:: AccountManagement
 
    Bases: :py:obj:`marshmallow.Schema`
@@ -161,6 +182,9 @@ Module Contents
 
 
    .. py:attribute:: EXTERNAL_LINKS
+
+
+   .. py:attribute:: PASSWORD_MANAGEMENT
 
 
 .. py:class:: UsersHubConfig
@@ -232,6 +256,9 @@ Module Contents
    .. py:attribute:: DISPLAY_LATEST_DISCUSSIONS
 
 
+   .. py:attribute:: DISPLAY_LATEST_VALIDATIONS
+
+
 .. py:class:: MetadataConfig
 
    Bases: :py:obj:`marshmallow.Schema`
@@ -255,19 +282,7 @@ Module Contents
    .. py:attribute:: DS_PDF_TITLE
 
 
-   .. py:attribute:: MAIL_SUBJECT_AF_CLOSED_BASE
-
-
-   .. py:attribute:: MAIL_CONTENT_AF_CLOSED_ADDITION
-
-
-   .. py:attribute:: MAIL_CONTENT_AF_CLOSED_PDF
-
-
-   .. py:attribute:: MAIL_CONTENT_AF_CLOSED_URL
-
-
-   .. py:attribute:: MAIL_CONTENT_AF_CLOSED_GREETINGS
+   .. py:attribute:: EXTENDED_AF_PUBLISH_ROUTE_NAME
 
 
    .. py:attribute:: CLOSED_MODAL_LABEL
@@ -283,6 +298,15 @@ Module Contents
 
 
    .. py:attribute:: METADATA_AREA_FILTERS
+
+
+   .. py:attribute:: ENABLE_UUID_EDITION_FIELD
+
+
+   .. py:attribute:: ROUTE_ADD_AF
+
+
+   .. py:attribute:: DATASETS_DEFAULT_ASSOCIATED_MODULES
 
 
 .. py:class:: AuthenticationConfig
@@ -316,6 +340,9 @@ Module Contents
 
 
    .. py:attribute:: SQLALCHEMY_TRACK_MODIFICATIONS
+
+
+   .. py:attribute:: SQLALCHEMY_ENGINE_OPTIONS
 
 
    .. py:attribute:: SESSION_TYPE
@@ -389,8 +416,8 @@ Module Contents
 
    .. py:method:: unwrap_usershub(data, **kwargs)
 
-      On met la section [USERSHUB] à la racine de la conf
-      pour compatibilité et simplicité ave le sous-module d'authentif
+      On met la section [USERSHUB] à la racine de la configuration
+      pour compatibilité et simplicité ave le sous-module d'authentification
 
 
 
@@ -451,10 +478,27 @@ Module Contents
    Bases: :py:obj:`marshmallow.Schema`
 
 
+   .. py:attribute:: ENABLE_TAB_OBSERVERS
+
+
    .. py:attribute:: ENABLE_TAB_PROFILE
 
 
    .. py:attribute:: ENABLE_TAB_TAXONOMY
+
+
+   .. py:attribute:: ENABLE_TAB_MEDIA
+
+
+.. py:class:: ObserverSheet
+
+   Bases: :py:obj:`marshmallow.Schema`
+
+
+   .. py:attribute:: ENABLE_TAB_TAXA
+
+
+   .. py:attribute:: ENABLE_TAB_MEDIA
 
 
 .. py:class:: Synthese
@@ -579,7 +623,24 @@ Module Contents
    .. py:attribute:: TAXON_SHEET
 
 
+   .. py:attribute:: FIELD_OBSERVERS_SEPARATORS
+
+
+   .. py:attribute:: ENABLE_OBSERVER_SHEETS
+
+
+   .. py:attribute:: OBSERVER_SHEET
+
+
    .. py:method:: warn_deprecated(data, **kwargs)
+
+
+.. py:class:: PermissionConfig
+
+   Bases: :py:obj:`marshmallow.Schema`
+
+
+   .. py:attribute:: GEOGRAPHIC_FILTER_AREA_TYPES
 
 
 .. py:data:: BASEMAP
@@ -661,6 +722,9 @@ Module Contents
 
 
    .. py:attribute:: IMPORT
+
+
+   .. py:attribute:: PERMISSIONS
 
 
    .. py:attribute:: MAPCONFIG
